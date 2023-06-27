@@ -3,17 +3,17 @@
     <div class="form-group">
       <div class="row">
         <label for="" class="form-label"> PostTitle </label>
-        <a-input type="text" class="form-control" v-model="post_title" />
+        <input type="text" class="form-control" v-model="post_title" />
       </div>
       <div class="row">
         <label for="" class="form-label"> Content </label>
-        <a-textarea
+        <textarea
           type="text"
           class="form-control"
           rows="5"
           v-model="post_content"
         >
-        </a-textarea>
+        </textarea>
       </div>
       <div class="row mb-3">
         <div class="form-check">
@@ -66,7 +66,6 @@
 
 <script>
 import axios from "axios";
-// import socket from "./../socket";
 export default {
   data() {
     return {
@@ -81,7 +80,8 @@ export default {
     async createPost() {
       try {
         const token = localStorage.getItem("token");
-        console.log(token);
+        console.log(this.post_title);
+        console.log(this.post_content);
         await axios.post(
           "http://localhost:3000/api/v1/posts",
           {
@@ -94,10 +94,7 @@ export default {
             },
           }
         );
-        // socket.on("refresh-data", () => {
-        //   console.log("listen to refresh-data");
-        //   this.$forceUpdate;
-        // });
+
         this.$router.push("/home");
       } catch (error) {
         this.error = error.response.data.error;

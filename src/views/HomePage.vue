@@ -64,13 +64,10 @@ export default {
     ...mapActions(["fetchPosts"]),
   },
   async mounted() {
-    // await this.getPosts();
-    this.fetchPosts();
+    await this.fetchPosts();
     await this.emitter.on("comment-success", async () => {
-      this.fetchPosts();
+      await this.fetchPosts();
       console.log("caught comment-success event");
-      // await this.getPosts();
-      this.$forceUpdate();
     });
   },
   computed: {

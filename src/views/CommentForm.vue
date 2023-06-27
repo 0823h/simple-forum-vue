@@ -89,6 +89,7 @@ export default {
         this.reply_content = "";
         // this.$emit("comment-success");
         this.emitter.emit("comment-success");
+
         this.$forceUpdate();
       } catch (error) {
         console.log(error);

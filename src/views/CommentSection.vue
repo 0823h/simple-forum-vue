@@ -36,22 +36,10 @@ export default {
   methods: {
     async getComment() {
       try {
-        // console.log(this.post_id);
-        const token = localStorage.getItem("token");
         const response = await axios.get(
-          `http://localhost:3000/api/v1/posts/${this.post_id}/reply`,
-          {
-            post_title: this.post_title,
-            post_content: this.post_content,
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
+          `http://localhost:3000/api/v1/posts/${this.post_id}/reply`
         );
         this.comments = response.data.data.rows;
-        // console.log(JSON.stringify(this.comments));
       } catch (error) {
         console.log(error);
         return;
@@ -60,6 +48,9 @@ export default {
   },
   async mounted() {
     await this.getComment();
+    this.emitter.on("comment-success", async () => {
+      this.getComment();
+    });
   },
 };
 </script>
