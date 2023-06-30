@@ -1,4 +1,5 @@
 <template>
+  <create-post-form></create-post-form>
   <a-table :columns="columns" :data-source="data">
     <template #name="{ text }">
       <a>{{ text }}</a>
@@ -98,6 +99,7 @@ const data = [
     tags: ["cool", "teacher"],
   },
 ];
+import CreatePostForm from "./CreatePostForm.vue";
 export default defineComponent({
   setup() {
     return {
@@ -108,6 +110,7 @@ export default defineComponent({
   components: {
     SmileOutlined,
     DownOutlined,
+    CreatePostForm,
   },
 });
 </script>

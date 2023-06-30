@@ -1,16 +1,32 @@
 <template>
-  <div class="container">
-    <div v-for="(post, index) in posts" :key="index">
-      <post-card
-        :post_title="post.post_title"
-        :post_content="post.post_content"
-        :created_time="post.createdAt"
-        :username="post.User.username"
-        :post_id="post.id"
-        @comment-success="commentSuccessHandler"
-      ></post-card>
+  <!-- <div class="container"> -->
+  <a-layout style="padding: 2rem">
+    <div style="">
+      <create-post-form></create-post-form>
     </div>
-  </div>
+  </a-layout>
+  <a-layout>
+    <a-layout-content
+      :style="{
+        background: '#fff',
+        padding: '24px',
+        margin: 0,
+        minHeight: '280px',
+      }"
+    >
+      <div v-for="(post, index) in posts" :key="index">
+        <post-card
+          :post_title="post.post_title"
+          :post_content="post.post_content"
+          :created_time="post.createdAt"
+          :username="post.User.username"
+          :post_id="post.id"
+          @comment-success="commentSuccessHandler"
+        ></post-card>
+      </div>
+    </a-layout-content>
+  </a-layout>
+  <!-- </div> -->
 
   <div
     class="modal"
@@ -22,7 +38,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Lỗi đăng nhập</h5>
+          <h5 class="modal-title">Error</h5>
           <button
             type="button"
             class="close"
@@ -43,10 +59,12 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import PostCard from "./PostCard.vue";
+import CreatePostForm from "./CreatePostForm.vue";
 // import socket from "./../socket";
 export default {
   components: {
     PostCard,
+    CreatePostForm,
   },
   emits: ["comment-success"],
   data() {
