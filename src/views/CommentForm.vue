@@ -2,17 +2,19 @@
   <form class="form-block">
     <div class="row">
       <div class="col-xs-12">
-        <div class="form-group">
-          <textarea
-            class="form-input"
-            required=""
-            placeholder="Comment here"
-            v-model="reply_content"
-          ></textarea>
-        </div>
+        <a-form>
+          <a-form-item>
+            <a-textarea
+              class="form-input"
+              required=""
+              placeholder="Comment here"
+              v-model="reply_content"
+            ></a-textarea>
+          </a-form-item>
+        </a-form>
       </div>
-      <a class="btn btn-primary pull-right" @click.prevent="createReply"
-        >submit</a
+      <a-button @click.prevent="createReply"
+        >submit</a-button
       >
     </div>
   </form>

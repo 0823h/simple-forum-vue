@@ -5,15 +5,15 @@ import router from './routes'
 import mitt from 'mitt';
 import store from './store'
 import Antd from 'ant-design-vue';
-import "ant-design-vue/dist/antd.css";
+import '../node_modules/ant-design-vue/dist/reset.css';
 
 const emitter = mitt();
-const app = createApp(App)
+const app = createApp(App);
 
 //vuex
 app.use(store);
 app.use(Antd);
 app.config.globalProperties.emitter = emitter;
-app.use(router)
+app.use(router);
 
-app.mount('#app')
+app.mount('#app');
